@@ -141,7 +141,7 @@ const Hero = () => {
                   autoComplete="off"
                   placeholder="Enter amount in ADA here"
                   className={
-                    "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
+                    "green_gradient outline-none placeholder:text-sm no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
 
@@ -193,7 +193,7 @@ const Hero = () => {
                   autoComplete="off"
                   placeholder="Enter amount in ADA here"
                   className={
-                    "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
+                    "green_gradient outline-none  no-spinners placeholder:text-sm placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
                 <div className="flex green_gradient px-4">

@@ -113,7 +113,6 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
-                  <span className="text-white text-sm">ADA</span>
                 </div>
               </div>
             ) : (

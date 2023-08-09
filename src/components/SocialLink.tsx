@@ -1,7 +1,7 @@
 const SocialLink = () => {
   return (
     <>
-      <div className="h-44 fixed  right-0 w-14  justify-center top-1/2 bottom-1/2 bg-[#154641] gap-4 flex items-center flex-col  text-center rounded-md text-white ">
+      <div className="h-44 fixed  right-0 w-14  justify-center  bottom-1/2 bg-[#154641] gap-4 flex items-center flex-col  text-center rounded-md text-white ">
         <a href="http://" target="_blank" rel="noopener noreferrer">
           <svg
             xmlns="http://www.w3.org/2000/svg"

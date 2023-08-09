@@ -27,8 +27,9 @@ const Hero = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
   return (
-    <div className="grid grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
+    <div className="grid mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
       <Presale />
       <div className="flex gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
         <div className="flex flex-col gap-4 w-full">
@@ -104,7 +105,7 @@ const Hero = () => {
                   placeholder="You will get"
                   className="green_gradient outline-none  placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
-                <div className="flex green_gradient px-4">
+                <div className="flex green_gradient px-4 items-center gap-4">
                   <img
                     src={"/assets/logo.svg"}
                     width={30}
@@ -112,6 +113,7 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
+                  <span className="text-white text-sm">ADA</span>
                 </div>
               </div>
             ) : (

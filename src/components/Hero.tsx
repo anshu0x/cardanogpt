@@ -29,7 +29,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="grid mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
+    <div className="grid md:mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
       <Presale />
       <div className="flex gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
         <div className="flex flex-col gap-4 w-full">

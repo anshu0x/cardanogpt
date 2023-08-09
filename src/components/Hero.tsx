@@ -94,52 +94,6 @@ const Hero = () => {
             <h1 className="text-white text-sm my-2">
               Available ADA Balance : 100.00 ADA
             </h1>
-            {show ? (
-              <div className="flex w-full green_gradient bg-opacity-20 backdrop-blur-sm rounded-md border border-[#01CC9C]">
-                <input
-                  type="number"
-                  name="cgi"
-                  autoComplete="off"
-                  value={values.cgi}
-                  onChange={handleChange}
-                  placeholder="You will get"
-                  className="green_gradient outline-none  placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
-                />
-                <div className="flex green_gradient px-4 items-center gap-4">
-                  <img
-                    src={"/assets/logo.svg"}
-                    width={30}
-                    height={30}
-                    alt="notfound"
-                    className="cursor-pointer"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="flex w-full green_gradientP bg-opacity-20 backdrop-blur-sm rounded-md border border-[#01CC9C]">
-                <input
-                  type="number"
-                  name="ada"
-                  value={values.ada}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  placeholder="Enter amount in ADA here"
-                  className={
-                    "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
-                  }
-                />
-                <div className="flex green_gradient px-4">
-                  <img
-                    src={"/assets/cardano.svg"}
-                    width={30}
-                    height={30}
-                    alt="notfound"
-                    className="cursor-pointer"
-                  />
-                </div>
-              </div>
-            )}
-
             <div
               className="w-full justify-center flex my-2 cursor-pointer"
               onClick={() => {
@@ -153,8 +107,8 @@ const Hero = () => {
                 alt="below"
               />
             </div>
-            {!show ? (
-              <div className="flex w-full green_gradient rounded-md border border-[#01CC9C]">
+            {show ? (
+              <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
                 <input
                   type="number"
                   name="cgi"
@@ -164,6 +118,9 @@ const Hero = () => {
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
+                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
+                  <p className="text-white text-sm">CGI</p>
+                </div>
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/logo.svg"}
@@ -187,6 +144,60 @@ const Hero = () => {
                     "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
+                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
+                  <span className="text-white text-sm">ADA</span>
+                </div>
+                <div className="flex green_gradient px-4">
+                  <img
+                    src={"/assets/cardano.svg"}
+                    width={30}
+                    height={30}
+                    alt="notfound"
+                    className="cursor-pointer"
+                  />
+                </div>
+              </div>
+            )}
+            {!show ? (
+              <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
+                <input
+                  type="number"
+                  name="cgi"
+                  autoComplete="off"
+                  value={values.cgi}
+                  onChange={handleChange}
+                  placeholder="You will get"
+                  className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
+                />
+                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
+                  <p className="text-white text-sm">CGI</p>
+                </div>
+                <div className="flex green_gradient px-4">
+                  <img
+                    src={"/assets/logo.svg"}
+                    width={30}
+                    height={30}
+                    alt="notfound"
+                    className="cursor-pointer"
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="flex w-full green_gradientP rounded-md border border-[#01CC9C]">
+                <input
+                  type="number"
+                  name="ada"
+                  value={values.ada}
+                  onChange={handleChange}
+                  autoComplete="off"
+                  placeholder="Enter amount in ADA here"
+                  className={
+                    "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
+                  }
+                />
+                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
+                  <span className="text-white text-sm">ADA</span>
+                </div>
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/cardano.svg"}

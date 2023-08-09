@@ -118,9 +118,6 @@ const Hero = () => {
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
-                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
-                  <p className="text-white text-sm">CGI</p>
-                </div>
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/logo.svg"}
@@ -129,6 +126,9 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
+                </div>{" "}
+                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                  <p className="text-white text-sm">CGI</p>
                 </div>
               </div>
             ) : (
@@ -144,9 +144,7 @@ const Hero = () => {
                     "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
-                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
-                  <span className="text-white text-sm">ADA</span>
-                </div>
+
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/cardano.svg"}
@@ -155,6 +153,9 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
+                </div>
+                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                  <span className="text-white text-sm">ADA</span>
                 </div>
               </div>
             )}
@@ -169,9 +170,6 @@ const Hero = () => {
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
-                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
-                  <p className="text-white text-sm">CGI</p>
-                </div>
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/logo.svg"}
@@ -180,6 +178,9 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
+                </div>{" "}
+                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                  <p className="text-white text-sm">CGI</p>
                 </div>
               </div>
             ) : (
@@ -195,9 +196,6 @@ const Hero = () => {
                     "green_gradient outline-none  no-spinners placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
-                <div className="flex h-12 md:h-full  green_gradientP border-l px-4 items-center justify-center">
-                  <span className="text-white text-sm">ADA</span>
-                </div>
                 <div className="flex green_gradient px-4">
                   <img
                     src={"/assets/cardano.svg"}
@@ -206,6 +204,9 @@ const Hero = () => {
                     alt="notfound"
                     className="cursor-pointer"
                   />
+                </div>{" "}
+                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                  <span className="text-white text-sm">ADA</span>
                 </div>
               </div>
             )}

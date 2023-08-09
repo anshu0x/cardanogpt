@@ -10,6 +10,7 @@ body {
   background-position: center;
   background-image: url("/assets/background.svg");
   font-family: "Plus Jakarta Sans", sans-serif;
+  position: relative;
 }
 
 .green_gradient {

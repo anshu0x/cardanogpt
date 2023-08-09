@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import SocialLink from "./components/SocialLink";
 const Root = () => {
   return (
     <>
       <Navbar />
       <Outlet />
+      <SocialLink />
     </>
   );
 };

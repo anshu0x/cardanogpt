@@ -94,19 +94,7 @@ const Hero = () => {
             <h1 className="text-white text-sm my-2">
               Available ADA Balance : 100.00 ADA
             </h1>
-            <div
-              className="w-full justify-center flex my-2 cursor-pointer"
-              onClick={() => {
-                setShow(!show);
-              }}
-            >
-              <img
-                src={"/assets/below.svg"}
-                width={20}
-                height={10}
-                alt="below"
-              />
-            </div>
+
             {show ? (
               <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
                 <input
@@ -159,6 +147,19 @@ const Hero = () => {
                 </div>
               </div>
             )}
+            <div
+              className="w-full justify-center flex my-2 cursor-pointer"
+              onClick={() => {
+                setShow(!show);
+              }}
+            >
+              <img
+                src={"/assets/below.svg"}
+                width={20}
+                height={10}
+                alt="below"
+              />
+            </div>
             {!show ? (
               <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
                 <input

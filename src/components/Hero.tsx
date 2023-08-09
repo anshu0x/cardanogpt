@@ -32,7 +32,7 @@ const Hero = () => {
       <Presale />
       <div className="flex gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
         <div className="flex flex-col gap-4 w-full">
-          <div className="flex w-full justify-between text-sm items-center text-left rounded-lg shadow-orange-50 green_gradientP border border-[#01CC9C] p-4  gap-2">
+          <div className="flex w-full justify-between text-sm items-center text-left rounded-lg shadow-orange-50 bg-opacity-20 backdrop-blur-sm green_gradientP border border-[#01CC9C] p-4  gap-2">
             <p className="text-white  text-left  font-semibold break-all">
               Your allocation
             </p>
@@ -41,7 +41,7 @@ const Hero = () => {
               <img src="/assets/logo.svg" width={25} height={10} />
             </div>
           </div>
-          <div className="flex flex-col rounded-lg shadow-orange-50  bg-[#1C2129] border border-[#01CC9C]  items-start justify-center text-center  p-6  md:p-8 gap-2">
+          <div className="flex flex-col rounded-lg shadow-orange-50  bg-[#1C2129] bg-opacity-20 backdrop-blur-sm border border-[#01CC9C]  items-start justify-center text-center  p-6  md:p-8 gap-2">
             <div className="flex items-center gap-4 justify-between">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ const Hero = () => {
         <div className="flex flex-col items-center w-full gap-4 justify-center">
           <form
             onSubmit={handleSubmit}
-            className="flex w-full flex-col rounded-lg shadow-orange-50  items-start text-center bg-[#1C2129] border border-[#01CC9C] p-6  md:p-8 gap-2"
+            className="flex w-full flex-col rounded-lg shadow-orange-50  items-start text-center bg-[#1C2129] bg-opacity-20 backdrop-blur-sm border border-[#01CC9C] p-6  md:p-8 gap-2"
           >
             <h1 className="text-xl font-black tracking-wider my-2 text-[#01CC9C]">
               Buy CGI tokens{" "}
@@ -94,7 +94,7 @@ const Hero = () => {
               Available ADA Balance : 100.00 ADA
             </h1>
             {show ? (
-              <div className="flex w-full green_gradient rounded-md border border-[#01CC9C]">
+              <div className="flex w-full green_gradient bg-opacity-20 backdrop-blur-sm rounded-md border border-[#01CC9C]">
                 <input
                   type="number"
                   name="cgi"
@@ -115,7 +115,7 @@ const Hero = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex w-full green_gradientP rounded-md border border-[#01CC9C]">
+              <div className="flex w-full green_gradientP bg-opacity-20 backdrop-blur-sm rounded-md border border-[#01CC9C]">
                 <input
                   type="number"
                   name="ada"

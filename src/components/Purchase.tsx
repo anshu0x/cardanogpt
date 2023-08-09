@@ -15,7 +15,7 @@ export default function Purchase({ closeModal, isOpen }: WalletConnectProps) {
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={closeModal}
         >
-          <div className="fixed inset-0  bg-opacity-75 backdrop-blur-lg" />
+          <div className="fixed inset-0  bg-opacity-75 backdrop-blur-md" />
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

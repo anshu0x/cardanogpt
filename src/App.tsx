@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Presale from "./components/Presale";
 const Root = () => {
   return (
     <>

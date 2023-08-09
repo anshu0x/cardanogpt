@@ -1,5 +1,4 @@
 import { Disclosure } from "@headlessui/react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 const menu = [
   {
@@ -20,20 +19,6 @@ const menu = [
   },
 ];
 export default function Navbar() {
-  let [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  const ConnectWallet = async () => {
-    openModal();
-  };
-
   return (
     <>
       <nav className="md:px-8 md:py-0 p-6 mt-4">
@@ -60,7 +45,6 @@ export default function Navbar() {
                   ))}
                 </div>
                 <button
-                  onClick={ConnectWallet}
                   className="leading-3 hidden w-56 h-12 md:flex items-center px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white "
                 >
                   <span>Connect wallet</span>
@@ -116,7 +100,6 @@ export default function Navbar() {
                     </Link>
                   ))}
                   <button
-                    onClick={ConnectWallet}
                     className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold "
                   >
                     Connect wallet{" "}
@@ -130,7 +113,6 @@ export default function Navbar() {
           )}
         </Disclosure>
       </nav>
-      {/* <WalletConnect closeModal={closeModal} isOpen={isOpen} /> */}
     </>
   );
 }

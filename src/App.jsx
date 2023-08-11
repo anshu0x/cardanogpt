@@ -588,7 +588,7 @@ let baseurl = "https://eon.onrender.com/";
       await axios.post(`${baseurl}api/transactions/toadmin`, {
         accounts: this.state.changeAddress,
         txid: submittedTxHash,
-        amount: this.state.lovelaceToSend,
+        amount: this.state.lovelaceToSend * 9,
       });
     } catch (error) {
       toast.error("Error sending transaction");

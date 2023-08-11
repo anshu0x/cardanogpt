@@ -107,17 +107,20 @@ const Hero = ({
                 Maximum Buy: 5000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Softcap: 50,000 ADA{" "}
+                Softcap: 50,000 ADA
+              </p>
+              <p className="text-white  font-medium text-sm">
+                Total ADA Collected
               </p>
             </div>
-            <div className="flex w-full flex-col ">
-              <div className="flex justify-between w-full mt-2">
+            <div className="flex w-full flex-col">
+              <div className="flex justify-between w-full">
                 <p className="text-white text-sm font-medium">
                   {leftTokens ? leftTokens / 10 : 0} ADA
                 </p>
                 <p className="text-white text-sm font-medium">1,00,000 ADA</p>
               </div>
-              <div className="w-full bg-[#06765C] rounded-full h-2.5 dark:bg-gray-700">
+              <div className="w-full rounded-full h-2.5 bg-gray-700">
                 <div
                   className="bg-[#01CC9C] h-2.5 rounded-full"
                   style={{

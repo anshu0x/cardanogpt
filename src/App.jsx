@@ -25,7 +25,7 @@ import {
 } from "@emurgo/cardano-serialization-lib-asmjs";
 import toast, { Toaster } from "react-hot-toast";
 let baseurl = "https://eon.onrender.com/";
- class Root extends Component {
+class Root extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ let baseurl = "https://eon.onrender.com/";
       walletIcon: undefined,
       walletAPIVersion: undefined,
       wallets: [],
-      networkId: undefined,
+      networkId: 1,
       Utxos: undefined,
       CollatUtxos: undefined,
       balance: undefined,
@@ -49,7 +49,7 @@ let baseurl = "https://eon.onrender.com/";
       txBodyCborHex_signed: "",
       submittedTxHash: "",
       addressBech32SendADA:
-        "addr_test1qqyx8l8gdwen5zj68cumzhcgjp4j4q8x86ydjs4xww0j7ah3dxa92fwvwk53ndtrzvwkvpdzqf53h9gla2qzuz6wjgps40q9am",
+        "addr1q9fzdvf2n740c6g7mvu92dh0np8hvfzh355gys8tmmrghzyqadyqhsjpy42reenjfkvsd0p0jfz4tp96sz5sz9vp0ntqnr80wv",
       lovelaceToSend: 0,
       assetNameHex: "4c494645",
       assetPolicyIdHex:
@@ -191,10 +191,10 @@ let baseurl = "https://eon.onrender.com/";
   };
   openWalletConnect = () => {
     this.setState({ walletConnect: true });
-  }
+  };
   closeWalletConnect = () => {
     this.setState({ walletConnect: false });
-  }
+  };
   checkAllocation = async () => {
     console.log("checkAllocation");
     const changeAddress = this.state.changeAddress;
@@ -206,7 +206,7 @@ let baseurl = "https://eon.onrender.com/";
         }
       );
       if (data.data.length === 0) {
-       return this.setState({ allocationAmount: 0 });
+        return this.setState({ allocationAmount: 0 });
       }
       let allocationAmount = data.data[0].totalAmount;
       this.setState({ allocationAmount: allocationAmount });
@@ -528,6 +528,9 @@ let baseurl = "https://eon.onrender.com/";
    * @returns {Promise<void>}
    */
   buildSendADATransaction = async () => {
+    if (this.state.networkId === 0) {
+      return toast.error("Please Connect to Mainnet");
+    }
     try {
       const txBuilder = await this.initTransactionBuilder();
       const shelleyOutputAddress = Address.from_bech32(
@@ -607,9 +610,13 @@ let baseurl = "https://eon.onrender.com/";
     return (
       <>
         <Toaster />
-        <Navbar  changeAddress={this.state.changeAddress} openWalletConnect={this.openWalletConnect}
-        closeWalletConnect={this.closeWalletConnect}
-        {...this.state} handleWalletSelect={this.handleWalletSelect} />
+        <Navbar
+          changeAddress={this.state.changeAddress}
+          openWalletConnect={this.openWalletConnect}
+          closeWalletConnect={this.closeWalletConnect}
+          {...this.state}
+          handleWalletSelect={this.handleWalletSelect}
+        />
         <Hero
           handleInputChange={this.handleInputChange}
           buildSendADATransaction={this.buildSendADATransaction}

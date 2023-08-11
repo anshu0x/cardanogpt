@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 const Presale = () => {
   const [remainingTime, setRemainingTime] = useState(0);
   useEffect(() => {
-    const targetDate = new Date("August 9, 2023");
-    targetDate.setDate(targetDate.getDate() + 14);
+    const targetDate = new Date("August 12, 2023");
+    targetDate.setDate(targetDate.getDate() + 10);
 
     const interval = setInterval(() => {
       const currentTime = new Date();

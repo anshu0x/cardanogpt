@@ -3,11 +3,7 @@ import Presale from "./Presale";
 import toast from "react-hot-toast";
 import Purchase from "./Purchase";
 import axios from "axios";
-let whiteListed = [
-  "addr_test1qqyx8l8gdwen5zj68cumzhcgjp4j4q8x86ydjs4xww0j7ah3dxa92fwvwk53ndtrzvwkvpdzqf53h9gla2qzuz6wjgps40q9am",
-  "addr_test1qq6uznljprpcx6a4q5f9s25h4kel7fd8vqzs7ccgju3aqaepfs4p05wfhnsfa78tmgnqrytk7nxnsqr9nycww8v54g7skpghyr",
-  "addr_test1qz6zwp5nm5y2hweaf206jerj4ssecn0xqs6n68g4m872wjq036p0vxvnvmyl4phnz3dzu6s9axaw357zpjwugh8mwvpstg3qvx",
-];
+import whiteListed from '../address.json'
 const Hero = ({
   balance,
   handleInputChange,
@@ -58,7 +54,7 @@ const Hero = ({
     })();
   }, []);
   return (
-    <div className="grid md:mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
+    <div className="grid md:my-8 grid-cols-1 items-center md:flex md:flex-col justify-center p-4  gap-4">
       <Presale />
       <div className="flex items-end gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
         <div className="flex flex-col gap-4 w-full">
@@ -91,22 +87,28 @@ const Hero = ({
             </div>
             <div className="flex flex-col text-left gap-4 my-4">
               <p className="text-white  font-medium text-sm">
-                Token Total Supply: 100,000,000
+                Token Total Supply: 10,000,000
               </p>
               <p className="text-white  font-medium text-sm">
-                Presale Allocation: 10,000,000 (10%)
+                Presale Allocation: 1,000,000 (10%)
               </p>
               <p className="text-white  font-medium text-sm">
                 Presale Hardcap: 1000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Token Price: 1 CGI = 1 ADA
+                Token Price: 1 ADA = 10 CGI
               </p>
               <p className="text-white  font-medium text-sm">
                 Minumum Buy: 100 CGI
               </p>
               <p className="text-white  font-medium text-sm">
-                Maximum Buy: 2000 CGI
+                Maximum Buy: 5000 CGI
+              </p>
+              <p className="text-white  font-medium text-sm">
+                Hardcap: 100,000 ADA
+              </p>
+              <p className="text-white  font-medium text-sm">
+                Softcap: 50,000 ADA{" "}
               </p>
             </div>
             <div className="flex w-full flex-col ">
@@ -114,7 +116,7 @@ const Hero = ({
                 <div
                   className="bg-[#01CC9C] h-2.5 rounded-full"
                   style={{
-                    width: Math.round((leftTokens / 275000) * 100),
+                    width: Math.round((leftTokens / 100000) * 100),
                   }}
                 ></div>
               </div>
@@ -122,7 +124,7 @@ const Hero = ({
                 <p className="text-white text-sm font-medium">
                   {leftTokens ? leftTokens : 0} CGI
                 </p>
-                <p className="text-white text-sm font-medium">2,75,000 CGI</p>
+                <p className="text-white text-sm font-medium">1,00,000 CGI</p>
               </div>
             </div>
           </div>

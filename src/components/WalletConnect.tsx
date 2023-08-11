@@ -62,7 +62,7 @@ export default function WalletConnect({
                         onChange={(e) => {
                           handleWalletSelect(e);
                         }}
-                        className="grid grid-cols-2 w-full justify-around gap-8 p-4 flex-wrap text-white"
+                        className="grid grid-cols-1 w-full justify-around gap-4 p-4 flex-wrap text-white"
                       >
                         {wallets?.length === 0
                           ? null
@@ -70,26 +70,33 @@ export default function WalletConnect({
                               <RadioGroup.Option key={key} value={key}>
                                 {({ checked }) => (
                                   <div
-                                    className={`relative flex border-2 text-white justify-center items-center flex-col p-4 rounded-xl  
+                                    className={`relative cursor-pointer flex border-2 text-white  items-center flex-row justify-between p-4 rounded-xl  
                             ${
                               checked
                                 ? "    border-slate-200"
                                 : " border-slate-500"
                             } `}
                                   >
-                                    <span className="text-xs absolute top-2 right-2">
-                                      {key}
-                                    </span>
+                                    <p className="text-xl text-center mt-2">
+                                      {window.cardano[key].name
+                                        .split(" ")[0]
+                                        .slice(0, 1)
+                                        .toUpperCase() +
+                                        window.cardano[key].name
+                                          .split(" ")[0]
+                                          .slice(1)
+                                          .toLowerCase()}
+                                    </p>
                                     <img
                                       alt="notfound"
                                       src={window.cardano[key].icon}
-                                      width={50}
-                                      height={50}
+                                      width={30}
+                                      height={30}
                                       className="cursor-pointer"
                                     />
-                                    <p className="text-sm text-center mt-2">
-                                      {window.cardano[key].name.split(" ")[0]}
-                                    </p>
+                                    <span className="text-xs font-mono absolute top-2 left-2">
+                                      {key}
+                                    </span>
                                   </div>
                                 )}
                               </RadioGroup.Option>

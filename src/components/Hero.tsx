@@ -3,6 +3,8 @@ import { useState } from "react";
 import * as Yup from "yup";
 import Presale from "./Presale";
 import Purchase from "./Purchase";
+// @ts-ignore
+import { useUserContext } from "../context/UserContext";
 const Hero = () => {
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -27,7 +29,7 @@ const Hero = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
+const {balance} = useUserContext();
   return (
     <div className="grid md:mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
       <Presale />
@@ -92,7 +94,7 @@ const Hero = () => {
               Buy CGI tokens{" "}
             </h1>
             <h1 className="text-white text-sm my-2">
-              Available ADA Balance : 100.00 ADA
+              Available ADA Balance : {balance} ADA
             </h1>
 
             {show ? (

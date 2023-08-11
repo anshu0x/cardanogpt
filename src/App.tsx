@@ -8,21 +8,19 @@ import {
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SocialLink from "./components/SocialLink";
+// @ts-ignore
+import { UserProvider } from "./context/UserContext";
 const Root = () => {
   return (
-    <>
+    <UserProvider>
       <Navbar />
       <Outlet />
       <SocialLink />
-    </>
+    </UserProvider>
   );
 };
 const Home = () => {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+  return <Hero />;
 };
 const router = createBrowserRouter(
   createRoutesFromElements(

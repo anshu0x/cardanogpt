@@ -1,5 +1,23 @@
 import { Disclosure } from "@headlessui/react";
+import { useState  , useEffect} from "react";
 import { Link } from "react-router-dom";
+import WalletConnect from "./WalletConnect";
+import { useUserContext } from "../context/UserContext";
+
+import {
+  Address,
+  TransactionUnspentOutput,
+  TransactionUnspentOutputs,
+  TransactionOutput,
+  Value,
+  TransactionBuilder,
+  TransactionBuilderConfigBuilder,
+  LinearFee,
+  BigNum,
+  TransactionWitnessSet,
+  Transaction,
+} from "@emurgo/cardano-serialization-lib-asmjs";
+import { Buffer } from "buffer";
 const menu = [
   {
     label: "Home",
@@ -19,6 +37,26 @@ const menu = [
   },
 ];
 export default function Navbar() {
+  const { address, balance, isTestnet, isWhiteListed  , pollWallets ,refreshData } = useUserContext();
+  let [isOpen, setIsOpen] = useState(false);
+console.log(balance,"balance");
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  const ConnectWallet = async () => {
+    openModal();
+  };
+  
+  useEffect(() => {
+    pollWallets();
+    refreshData()
+  }, []);
   return (
     <>
       <nav className="md:px-8 md:py-0 p-6 mt-4">
@@ -44,9 +82,7 @@ export default function Navbar() {
                     </Link>
                   ))}
                 </div>
-                <button
-                  className="leading-3 hidden w-56 h-12 md:flex items-center px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white "
-                >
+                <button onClick={openModal} className="leading-3 hidden w-56 h-12 md:flex items-center px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white ">
                   <span>Connect wallet</span>
                   <span className="ml-2">
                     <img src="/assets/Vector.svg" width={14} height={14} />
@@ -86,9 +122,11 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
               </div>
-              <Disclosure.Panel style={{
-                zIndex: 9999
-              }}>
+              <Disclosure.Panel
+                style={{
+                  zIndex: 9999,
+                }}
+              >
                 <div className="flex flex-col items-center justify-start order-2 w-full md:hidden">
                   {menu.map((item, index) => (
                     <Link
@@ -99,9 +137,7 @@ export default function Navbar() {
                       {item.label}
                     </Link>
                   ))}
-                  <button
-                    className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold "
-                  >
+                  <button onClick={openModal} className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold ">
                     Connect wallet{" "}
                     <span className="ml-2">
                       <img src="/assets/Vector.svg" />
@@ -113,6 +149,7 @@ export default function Navbar() {
           )}
         </Disclosure>
       </nav>
+      <WalletConnect closeModal={closeModal} isOpen={isOpen} />
     </>
   );
 }

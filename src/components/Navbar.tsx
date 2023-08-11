@@ -35,7 +35,6 @@ export default function Navbar({
   closeWalletConnect: any;
   openWalletConnect: any;walletConnect: any;changeAddress:any
 }) {
-  console.log(changeAddress,"changeAddress");
   
   return (
     <>
@@ -65,7 +64,7 @@ export default function Navbar({
                 {!!whichWalletSelected ? (
                   <button
                     onClick={openWalletConnect}
-                    className="text-white text-sm hidden w-56 h-12 md:flex"
+                    className="leading-3 hidden md:flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold "
                   >
                     {changeAddress?.slice(0, 6)}...{changeAddress?.slice(-4)}
                   </button>
@@ -132,7 +131,7 @@ export default function Navbar({
                   {!!whichWalletSelected ? (
                     <button
                       onClick={openWalletConnect}
-                      className="text-white text-sm w-56 h-12"
+                      className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold "
                     >
                     {changeAddress?.slice(0, 6)}...{changeAddress?.slice(-4)}
                     </button>

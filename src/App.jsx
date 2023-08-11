@@ -618,6 +618,7 @@ class Root extends Component {
           handleWalletSelect={this.handleWalletSelect}
         />
         <Hero
+          openWalletConnect={this.openWalletConnect}
           handleInputChange={this.handleInputChange}
           buildSendADATransaction={this.buildSendADATransaction}
           {...this.state}

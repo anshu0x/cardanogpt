@@ -607,7 +607,7 @@ let baseurl = "https://eon.onrender.com/";
     return (
       <>
         <Toaster />
-        <Navbar openWalletConnect={this.openWalletConnect}
+        <Navbar  changeAddress={this.state.changeAddress} openWalletConnect={this.openWalletConnect}
         closeWalletConnect={this.closeWalletConnect}
         {...this.state} handleWalletSelect={this.handleWalletSelect} />
         <Hero

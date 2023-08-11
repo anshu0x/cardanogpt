@@ -26,14 +26,17 @@ export default function Navbar({
   whichWalletSelected,
   closeWalletConnect,
   openWalletConnect,
-  walletConnect
+  walletConnect,
+  changeAddress
 }: {
   wallets: any;
   handleWalletSelect: any;
   whichWalletSelected: any;
   closeWalletConnect: any;
-  openWalletConnect: any;walletConnect: any;
+  openWalletConnect: any;walletConnect: any;changeAddress:any
 }) {
+  console.log(changeAddress,"changeAddress");
+  
   return (
     <>
       <nav className="md:px-8 md:py-0 p-6 mt-4">
@@ -64,7 +67,7 @@ export default function Navbar({
                     onClick={openWalletConnect}
                     className="text-white text-sm hidden w-56 h-12 md:flex"
                   >
-                    Connected to {whichWalletSelected} Wallet
+                    {changeAddress?.slice(0, 6)}...{changeAddress?.slice(-4)}
                   </button>
                 ) : (
                   <button
@@ -131,7 +134,7 @@ export default function Navbar({
                       onClick={openWalletConnect}
                       className="text-white text-sm w-56 h-12"
                     >
-                      Connected to {whichWalletSelected} Wallet
+                    {changeAddress?.slice(0, 6)}...{changeAddress?.slice(-4)}
                     </button>
                   ) : (
                     <button

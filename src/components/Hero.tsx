@@ -98,7 +98,7 @@ const Hero = ({
               Buy CGI tokens
             </h1>
             <h1 className="text-white text-sm my-2">
-              Available ADA Balance : {balance} ADA
+              Available ADA Balance : {!!balance ? balance : 0} ADA
             </h1>
             {show ? (
               <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">

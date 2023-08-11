@@ -95,7 +95,7 @@ const Hero = ({
                 Presale Allocation: 1,000,000 (10%)
               </p>
               <p className="text-white  font-medium text-sm">
-                Presale Hardcap: 1000 ADA
+                Presale Hardcap: 1,00,000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
                 Token Price: 1 ADA = 10 CGI

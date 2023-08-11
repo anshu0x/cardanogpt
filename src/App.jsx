@@ -623,7 +623,7 @@ let baseurl = "https://eon.onrender.com/";
 }
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<Root />} />)
+  createRoutesFromElements(<Route path="*" element={<Root />} />)
 );
 
 const App = () => <RouterProvider router={router} />;

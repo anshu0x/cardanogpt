@@ -5,6 +5,7 @@ import Purchase from "./Purchase";
 let whiteListed = [
   "addr_test1qqyx8l8gdwen5zj68cumzhcgjp4j4q8x86ydjs4xww0j7ah3dxa92fwvwk53ndtrzvwkvpdzqf53h9gla2qzuz6wjgps40q9am",
   "addr_test1qq6uznljprpcx6a4q5f9s25h4kel7fd8vqzs7ccgju3aqaepfs4p05wfhnsfa78tmgnqrytk7nxnsqr9nycww8v54g7skpghyr",
+  "addr_test1qz6zwp5nm5y2hweaf206jerj4ssecn0xqs6n68g4m872wjq036p0vxvnvmyl4phnz3dzu6s9axaw357zpjwugh8mwvpstg3qvx"
 ];
 const Hero = ({
   balance,

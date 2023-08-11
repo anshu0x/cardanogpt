@@ -101,10 +101,10 @@ const Hero = ({
                 Token Price: 1 ADA = 10 CGI
               </p>
               <p className="text-white  font-medium text-sm">
-                Minumum Buy: 100 CGI
+                Minumum Buy: 1000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Maximum Buy: 5000 CGI
+                Maximum Buy: 5000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
                 Hardcap: 100,000 ADA

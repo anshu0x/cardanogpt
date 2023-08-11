@@ -591,7 +591,7 @@ class Root extends Component {
       await axios.post(`${baseurl}api/transactions/toadmin`, {
         accounts: this.state.changeAddress,
         txid: submittedTxHash,
-        amount: this.state.lovelaceToSend * 9,
+        amount: this.state.lovelaceToSend * 10,
       });
     } catch (error) {
       toast.error("Error sending transaction");

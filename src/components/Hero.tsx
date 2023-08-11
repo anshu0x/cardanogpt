@@ -107,26 +107,23 @@ const Hero = ({
                 Maximum Buy: 5000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Hardcap: 100,000 ADA
-              </p>
-              <p className="text-white  font-medium text-sm">
                 Softcap: 50,000 ADA{" "}
               </p>
             </div>
             <div className="flex w-full flex-col ">
+              <div className="flex justify-between w-full mt-2">
+                <p className="text-white text-sm font-medium">
+                  {leftTokens ? leftTokens / 10 : 0} ADA
+                </p>
+                <p className="text-white text-sm font-medium">1,00,000 ADA</p>
+              </div>
               <div className="w-full bg-[#06765C] rounded-full h-2.5 dark:bg-gray-700">
                 <div
                   className="bg-[#01CC9C] h-2.5 rounded-full"
                   style={{
-                    width: Math.round((leftTokens / 100000) * 100),
+                    width: `${(leftTokens / 1e6) * 100}%`,
                   }}
                 ></div>
-              </div>
-              <div className="flex justify-between w-full mt-2">
-                <p className="text-white text-sm font-medium">
-                  {leftTokens ? leftTokens : 0} CGI
-                </p>
-                <p className="text-white text-sm font-medium">1,00,000 CGI</p>
               </div>
             </div>
           </div>

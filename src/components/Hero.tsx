@@ -146,7 +146,7 @@ const Hero = ({
                   name="cgi"
                   autoComplete="off"
                   disabled
-                  value={lovelaceToSend * 9}
+                  value={lovelaceToSend * 10}
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
@@ -216,7 +216,7 @@ const Hero = ({
                   disabled
                   name="cgi"
                   autoComplete="off"
-                  value={lovelaceToSend * 9}
+                  value={lovelaceToSend * 10}
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />

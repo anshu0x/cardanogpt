@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Presale from "./Presale";
 import toast from "react-hot-toast";
 import Purchase from "./Purchase";
+import axios from "axios";
 let whiteListed = [
   "addr_test1qqyx8l8gdwen5zj68cumzhcgjp4j4q8x86ydjs4xww0j7ah3dxa92fwvwk53ndtrzvwkvpdzqf53h9gla2qzuz6wjgps40q9am",
   "addr_test1qq6uznljprpcx6a4q5f9s25h4kel7fd8vqzs7ccgju3aqaepfs4p05wfhnsfa78tmgnqrytk7nxnsqr9nycww8v54g7skpghyr",
-  "addr_test1qz6zwp5nm5y2hweaf206jerj4ssecn0xqs6n68g4m872wjq036p0vxvnvmyl4phnz3dzu6s9axaw357zpjwugh8mwvpstg3qvx"
+  "addr_test1qz6zwp5nm5y2hweaf206jerj4ssecn0xqs6n68g4m872wjq036p0vxvnvmyl4phnz3dzu6s9axaw357zpjwugh8mwvpstg3qvx",
 ];
 const Hero = ({
   balance,
@@ -29,6 +30,11 @@ const Hero = ({
   const [show, setShow] = useState(false);
   const buyTokens = () => {
     if (whiteListed.includes(changeAddress)) {
+      if (lovelaceToSend < 1000) {
+        return toast.error("Minimum buy is 1000 ADA");
+      } else if (lovelaceToSend > 5000) {
+        return toast.error("Maximum buy is 5000 ADA");
+      }
       try {
         buildSendADATransaction();
       } catch (error) {
@@ -38,11 +44,23 @@ const Hero = ({
       toast.error("You are not whitelisted to buy tokens");
     }
   };
-
+  const [leftTokens, setLeftTokens] = useState(0);
+  useEffect(() => {
+    (async () => {
+      let { data } = await axios.get(
+        "https://eon.onrender.com/api/transactions/getall"
+      );
+      if (data.data.length === 0) {
+        return setLeftTokens(0);
+      }
+      let total = data.data[0].totalAmount;
+      setLeftTokens(total);
+    })();
+  }, []);
   return (
     <div className="grid md:mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
       <Presale />
-      <div className="flex gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
+      <div className="flex items-end gap-4 flex-col md:flex-row w-full max-w-3xl justify-center md:justify-around">
         <div className="flex flex-col gap-4 w-full">
           <div className="flex w-full justify-between text-sm items-center text-left rounded-lg shadow-orange-50 bg-opacity-20 backdrop-blur-sm green_gradientP border border-[#01CC9C] p-4  gap-2">
             <p className="text-white  text-left  font-semibold break-all">
@@ -91,6 +109,22 @@ const Hero = ({
                 Maximum Buy: 2000 CGI
               </p>
             </div>
+            <div className="flex w-full flex-col ">
+              <div className="w-full bg-[#06765C] rounded-full h-2.5 dark:bg-gray-700">
+                <div
+                  className="bg-[#01CC9C] h-2.5 rounded-full"
+                  style={{
+                    width: Math.round((leftTokens / 275000) * 100),
+                  }}
+                ></div>
+              </div>
+              <div className="flex justify-between w-full mt-2">
+                <p className="text-white text-sm font-medium">
+                  {leftTokens ? leftTokens : 0} CGI
+                </p>
+                <p className="text-white text-sm font-medium">2,75,000 CGI</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center w-full gap-4 justify-center">
@@ -121,7 +155,8 @@ const Hero = ({
                     className="cursor-pointer"
                   />
                 </div>
-                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                <div className="flex px-2 green_gradientP items-center justify-center">
+                  {" "}
                   <p className="text-white text-sm">CGI</p>
                 </div>
               </div>
@@ -151,7 +186,8 @@ const Hero = ({
                     className="cursor-pointer"
                   />
                 </div>
-                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                <div className="flex px-2 green_gradientP items-center justify-center">
+                  {" "}
                   <span className="text-white text-sm">ADA</span>
                 </div>
               </div>
@@ -189,7 +225,8 @@ const Hero = ({
                     className="cursor-pointer"
                   />
                 </div>
-                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
+                <div className="flex px-2 green_gradientP items-center justify-center">
+                  {" "}
                   <p className="text-white text-sm">CGI</p>
                 </div>
               </div>
@@ -199,7 +236,6 @@ const Hero = ({
                   type="number"
                   name="ada"
                   value={lovelaceToSend}
-                  min={1}
                   onChange={(e) => {
                     handleInputChange(e);
                   }}
@@ -209,7 +245,7 @@ const Hero = ({
                     "green_gradient outline-none  no-spinners placeholder:text-sm placeholder:text-white placeholder-shown:text-white text-white p-3 w-full "
                   }
                 />
-                <div className="flex green_gradient px-4">
+                <div className="flex green_gradient px-4 items-center">
                   <img
                     src={"/assets/cardano.svg"}
                     width={30}
@@ -218,12 +254,16 @@ const Hero = ({
                     className="cursor-pointer"
                   />
                 </div>
-                <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
-                  <span className="text-white text-sm">ADA</span>
+                <div className="flex px-2 green_gradientP items-center justify-center">
+                  <span className="text-white text-sm">ADAA</span>
                 </div>
               </div>
             )}
-
+            <span>
+              <p className="text-white text-sm font-medium mt-2">
+                Minimum purchase amount is 1000 ADA and maximum is 5000 ADA.
+              </p>
+            </span>
             <button
               type="button"
               placeholder="Timer"

@@ -1,35 +1,43 @@
-import { useFormik } from "formik";
 import { useState } from "react";
-import * as Yup from "yup";
 import Presale from "./Presale";
+import toast from "react-hot-toast";
 import Purchase from "./Purchase";
-// @ts-ignore
-import { useUserContext } from "../context/UserContext";
-const Hero = () => {
-  const { values, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      cgi: "",
-      ada: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validationSchema: Yup.object({
-      cgi: Yup.string().required("Required"),
-      ada: Yup.string().required("Required"),
-    }),
-  });
+let whiteListed = [
+  "addr_test1qqyx8l8gdwen5zj68cumzhcgjp4j4q8x86ydjs4xww0j7ah3dxa92fwvwk53ndtrzvwkvpdzqf53h9gla2qzuz6wjgps40q9am",
+  "addr_test1qq6uznljprpcx6a4q5f9s25h4kel7fd8vqzs7ccgju3aqaepfs4p05wfhnsfa78tmgnqrytk7nxnsqr9nycww8v54g7skpghyr",
+];
+const Hero = ({
+  balance,
+  handleInputChange,
+  lovelaceToSend,
+  buildSendADATransaction,
+  closeModal,
+  showTransactionModal,
+  allocationAmount,
+  changeAddress,
+}: {
+  balance: any;
+  handleInputChange: any;
+  buildSendADATransaction: any;
+  lovelaceToSend: any;
+  closeModal: any;
+  showTransactionModal: any;
+  allocationAmount: any;
+  changeAddress: any;
+}) => {
   const [show, setShow] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
+  const buyTokens = () => {
+    if (whiteListed.includes(changeAddress)) {
+      try {
+        buildSendADATransaction();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      toast.error("You are not whitelisted to buy tokens");
+    }
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-const {balance} = useUserContext();
   return (
     <div className="grid md:mt-8 grid-cols-1 items-center md:flex md:flex-col  justify-center p-4  gap-4">
       <Presale />
@@ -39,8 +47,8 @@ const {balance} = useUserContext();
             <p className="text-white  text-left  font-semibold break-all">
               Your allocation
             </p>
-            <div className="flex gap-4 items-center">
-              <span className="text-white">20000.00</span>{" "}
+            <div className="flex gap-4 items-center text-white">
+              {allocationAmount > 0 ? <span>{allocationAmount}</span> : 0}
               <img src="/assets/logo.svg" width={25} height={10} />
             </div>
           </div>
@@ -57,10 +65,10 @@ const {balance} = useUserContext();
                   d="M13.2 8.4H10.8V6H13.2M13.2 18H10.8V10.8H13.2M12 0C10.4241 0 8.86371 0.310389 7.4078 0.913446C5.95189 1.5165 4.62902 2.40042 3.51472 3.51472C1.26428 5.76516 0 8.8174 0 12C0 15.1826 1.26428 18.2348 3.51472 20.4853C4.62902 21.5996 5.95189 22.4835 7.4078 23.0866C8.86371 23.6896 10.4241 24 12 24C15.1826 24 18.2348 22.7357 20.4853 20.4853C22.7357 18.2348 24 15.1826 24 12C24 10.4241 23.6896 8.86371 23.0866 7.4078C22.4835 5.95189 21.5996 4.62902 20.4853 3.51472C19.371 2.40042 18.0481 1.5165 16.5922 0.913446C15.1363 0.310389 13.5759 0 12 0Z"
                   fill="#CBCE22"
                 />
-              </svg>{" "}
+              </svg>
               <h1 className="text-xl font-medium tracking-wider text-[#01CC9C]">
                 Sale information
-              </h1>{" "}
+              </h1>
             </div>
             <div className="flex flex-col text-left gap-4 my-4">
               <p className="text-white  font-medium text-sm">
@@ -70,13 +78,13 @@ const {balance} = useUserContext();
                 Presale Allocation: 10,000,000 (10%)
               </p>
               <p className="text-white  font-medium text-sm">
-                Presale Hardcap: 1000 ADA{" "}
+                Presale Hardcap: 1000 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Token Price: 1 CGI = 1 ADA{" "}
+                Token Price: 1 CGI = 1 ADA
               </p>
               <p className="text-white  font-medium text-sm">
-                Minumum Buy: 100 CGI{" "}
+                Minumum Buy: 100 CGI
               </p>
               <p className="text-white  font-medium text-sm">
                 Maximum Buy: 2000 CGI
@@ -84,27 +92,22 @@ const {balance} = useUserContext();
             </div>
           </div>
         </div>
-        {/* transaction hash */}
         <div className="flex flex-col items-center w-full gap-4 justify-center">
-          <form
-            onSubmit={handleSubmit}
-            className="flex w-full flex-col rounded-lg shadow-orange-50  items-start text-center bg-[#1C2129] bg-opacity-20 backdrop-blur-sm border border-[#01CC9C] p-6  md:p-8 gap-2"
-          >
+          <div className="flex w-full flex-col rounded-lg shadow-orange-50  items-start text-center bg-[#1C2129] bg-opacity-20 backdrop-blur-sm border border-[#01CC9C] p-6  md:p-8 gap-2">
             <h1 className="text-xl font-black tracking-wider my-2 text-[#01CC9C]">
-              Buy CGI tokens{" "}
+              Buy CGI tokens
             </h1>
             <h1 className="text-white text-sm my-2">
               Available ADA Balance : {balance} ADA
             </h1>
-
             {show ? (
               <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
                 <input
                   type="number"
                   name="cgi"
                   autoComplete="off"
-                  value={values.cgi}
-                  onChange={handleChange}
+                  disabled
+                  value={lovelaceToSend * 9}
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
@@ -116,7 +119,7 @@ const {balance} = useUserContext();
                     alt="notfound"
                     className="cursor-pointer"
                   />
-                </div>{" "}
+                </div>
                 <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
                   <p className="text-white text-sm">CGI</p>
                 </div>
@@ -126,8 +129,11 @@ const {balance} = useUserContext();
                 <input
                   type="number"
                   name="ada"
-                  value={values.ada}
-                  onChange={handleChange}
+                  min={1}
+                  value={lovelaceToSend}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
                   autoComplete="off"
                   placeholder="Enter amount in ADA here"
                   className={
@@ -166,10 +172,10 @@ const {balance} = useUserContext();
               <div className="flex w-full  green_gradient rounded-md border border-[#01CC9C]">
                 <input
                   type="number"
+                  disabled
                   name="cgi"
                   autoComplete="off"
-                  value={values.cgi}
-                  onChange={handleChange}
+                  value={lovelaceToSend * 9}
                   placeholder="You will get"
                   className="green_gradient outline-none placeholder:text-sm placeholder:text-white no-spinners placeholder-shown:text-white text-white p-3 w-full"
                 />
@@ -181,7 +187,7 @@ const {balance} = useUserContext();
                     alt="notfound"
                     className="cursor-pointer"
                   />
-                </div>{" "}
+                </div>
                 <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
                   <p className="text-white text-sm">CGI</p>
                 </div>
@@ -191,8 +197,11 @@ const {balance} = useUserContext();
                 <input
                   type="number"
                   name="ada"
-                  value={values.ada}
-                  onChange={handleChange}
+                  value={lovelaceToSend}
+                  min={1}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
                   autoComplete="off"
                   placeholder="Enter amount in ADA here"
                   className={
@@ -207,7 +216,7 @@ const {balance} = useUserContext();
                     alt="notfound"
                     className="cursor-pointer"
                   />
-                </div>{" "}
+                </div>
                 <div className="flex h-12 md:h-full  green_gradientP  px-4 items-center justify-center">
                   <span className="text-white text-sm">ADA</span>
                 </div>
@@ -215,10 +224,10 @@ const {balance} = useUserContext();
             )}
 
             <button
-              type="submit"
+              type="button"
               placeholder="Timer"
-              className="green_gradient flex items-center gap-4 justify-center my-4 buy p-2.5 w-full text-white rounded-md text-sm border border-[#01CC9C]"
-              onClick={openModal}
+              className="green_gradient disabled:cursor-not-allowed flex items-center gap-4 justify-center my-4 buy p-2.5 w-full text-white rounded-md text-sm border border-[#01CC9C]"
+              onClick={buyTokens}
             >
               Click to purchase
               <svg
@@ -234,10 +243,10 @@ const {balance} = useUserContext();
                 />
               </svg>
             </button>
-          </form>
+          </div>
         </div>
       </div>
-      <Purchase isOpen={isOpen} closeModal={closeModal} />
+      <Purchase isOpen={showTransactionModal} closeModal={closeModal} />
     </div>
   );
 };

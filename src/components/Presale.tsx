@@ -29,16 +29,16 @@ const Presale = () => {
     const seconds = remainingTime % 60;
     return (
       <div className="flex gap-4 justify-center items-center">
-        <div className="flex bg-[#14171D] text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
+        <div className="flex bg-[#14171D] bg-opacity-25 text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
           <p>{days}d</p>
         </div>
-        <div className="flex bg-[#14171D] text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
+        <div className="flex bg-[#14171D] bg-opacity-25 text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
           <p>{hours}h</p>
         </div>
-        <div className="flex bg-[#14171D] text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
+        <div className="flex bg-[#14171D] bg-opacity-25 text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
           <p>{minutes}m</p>
         </div>
-        <div className="flex bg-[#14171D] text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
+        <div className="flex bg-[#14171D] bg-opacity-25 text-white border border-[#18E7B6] rounded-md p-3 md:p-4 font-bold">
           <p>{seconds}s</p>
         </div>
       </div>

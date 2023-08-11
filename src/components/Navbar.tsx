@@ -1,23 +1,7 @@
 import { Disclosure } from "@headlessui/react";
-import { useState  , useEffect} from "react";
 import { Link } from "react-router-dom";
 import WalletConnect from "./WalletConnect";
-import { useUserContext } from "../context/UserContext";
 
-import {
-  Address,
-  TransactionUnspentOutput,
-  TransactionUnspentOutputs,
-  TransactionOutput,
-  Value,
-  TransactionBuilder,
-  TransactionBuilderConfigBuilder,
-  LinearFee,
-  BigNum,
-  TransactionWitnessSet,
-  Transaction,
-} from "@emurgo/cardano-serialization-lib-asmjs";
-import { Buffer } from "buffer";
 const menu = [
   {
     label: "Home",
@@ -36,27 +20,20 @@ const menu = [
     href: "/",
   },
 ];
-export default function Navbar() {
-  const { address, balance, isTestnet, isWhiteListed  , pollWallets ,refreshData } = useUserContext();
-  let [isOpen, setIsOpen] = useState(false);
-console.log(balance,"balance");
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  const ConnectWallet = async () => {
-    openModal();
-  };
-  
-  useEffect(() => {
-    pollWallets();
-    refreshData()
-  }, []);
+export default function Navbar({
+  wallets,
+  handleWalletSelect,
+  whichWalletSelected,
+  closeWalletConnect,
+  openWalletConnect,
+  walletConnect
+}: {
+  wallets: any;
+  handleWalletSelect: any;
+  whichWalletSelected: any;
+  closeWalletConnect: any;
+  openWalletConnect: any;walletConnect: any;
+}) {
   return (
     <>
       <nav className="md:px-8 md:py-0 p-6 mt-4">
@@ -82,12 +59,24 @@ console.log(balance,"balance");
                     </Link>
                   ))}
                 </div>
-                <button onClick={openModal} className="leading-3 hidden w-56 h-12 md:flex items-center px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white ">
-                  <span>Connect wallet</span>
-                  <span className="ml-2">
-                    <img src="/assets/Vector.svg" width={14} height={14} />
-                  </span>
-                </button>
+                {!!whichWalletSelected ? (
+                  <button
+                    onClick={openWalletConnect}
+                    className="text-white text-sm hidden w-56 h-12 md:flex"
+                  >
+                    Connected to {whichWalletSelected} Wallet
+                  </button>
+                ) : (
+                  <button
+                    onClick={openWalletConnect}
+                    className="leading-3 hidden w-56 h-12 md:flex items-center px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white "
+                  >
+                    <span>Connect wallet</span>
+                    <span className="ml-2">
+                      <img src="/assets/Vector.svg" width={14} height={14} />
+                    </span>
+                  </button>
+                )}
                 <div className="flex md:hidden  items-center justify-between w-full md:w-auto">
                   <img
                     src="/assets/logo.svg"
@@ -137,19 +126,37 @@ console.log(balance,"balance");
                       {item.label}
                     </Link>
                   ))}
-                  <button onClick={openModal} className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold ">
-                    Connect wallet{" "}
-                    <span className="ml-2">
-                      <img src="/assets/Vector.svg" />
-                    </span>
-                  </button>
+                  {!!whichWalletSelected ? (
+                    <button
+                      onClick={openWalletConnect}
+                      className="text-white text-sm w-56 h-12"
+                    >
+                      Connected to {whichWalletSelected} Wallet
+                    </button>
+                  ) : (
+                    <button
+                      onClick={openWalletConnect}
+                      className="leading-3 flex items-center mt-4 py-3 px-4 text-center rounded-md border-[#14E8B6] green_gradient border text-white font-bold "
+                    >
+                      Connect wallet{" "}
+                      <span className="ml-2">
+                        <img src="/assets/Vector.svg" />
+                      </span>
+                    </button>
+                  )}
                 </div>
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
       </nav>
-      <WalletConnect closeModal={closeModal} isOpen={isOpen} />
+      <WalletConnect
+        wallets={wallets}
+        handleWalletSelect={handleWalletSelect}
+        whichWalletSelected={whichWalletSelected}
+        closeModal={closeWalletConnect}
+        isOpen={walletConnect}
+      />
     </>
   );
 }

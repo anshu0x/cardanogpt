@@ -78,7 +78,7 @@ export default function WalletConnect({
                           ? null
                           : wallets?.map((key: any) => (
                               <RadioGroup.Option key={key} value={key}>
-                                {({ checked }) => (
+                                {() => (
                                   <div
                                     className={`relative cursor-pointer flex shadow-md text-white  items-center flex-row justify-between p-4 rounded-xl  
                          ${key} `}

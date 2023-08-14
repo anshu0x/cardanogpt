@@ -603,8 +603,28 @@ class Root extends Component {
     this.setState({ showTransactionModal: false });
   };
   async componentDidMount() {
-    this.pollWallets();
-    await this.refreshData();
+    const wallets = [];
+    for (const key in window.cardano) {
+      if (window.cardano[key].enable && wallets.indexOf(key) === -1) {
+        wallets.push(key);
+      }
+    }
+    if (wallets.length === 0 && count < 3) {
+      setTimeout(() => {
+        this.pollWallets(count + 1);
+      }, 1000);
+      return;
+    }
+    this.setState({
+      wallets,
+    });
+    // this.refreshData();
+    // this.setState(
+    //   {
+    //     wallets,
+    //   },
+    //   () => this.initTransactionBuilder()
+    // );
   }
   render() {
     return (

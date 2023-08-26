@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import Purchase from "./Purchase";
 import axios from "axios";
 import whiteListed from "../address.json";
+import { Link } from "react-router-dom";
 const Hero = ({
   balance,
   handleInputChange,
@@ -290,17 +291,13 @@ const Hero = ({
                 </svg>
               </button>
             ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  console.log("open wallet connect");
-                  openWalletConnect();
-                }}
-                placeholder="Timer"
+              <Link
+                to={"https://zealy.io/c/replyada"}
+                target="_blank"
                 className="green_gradient disabled:cursor-not-allowed flex items-center gap-4 justify-center my-4 buy p-2.5 w-full text-white rounded-md text-sm border border-[#01CC9C]"
               >
-                Connect Wallet
-              </button>
+                Join our whitelist
+              </Link>
             )}
           </div>
         </div>

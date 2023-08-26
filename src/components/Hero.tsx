@@ -14,7 +14,6 @@ const Hero = ({
   showTransactionModal,
   allocationAmount,
   changeAddress,
-  openWalletConnect,
 }: {
   balance: any;
   handleInputChange: any;
